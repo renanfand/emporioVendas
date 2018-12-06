@@ -1,0 +1,61 @@
+
+
+<div class="row">
+  <div class="col-md-8">
+    <% @announcements.all.each do |announcement| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h2><a href="../announcements/<%= announcement.id %>"><%= announcement.title %></a></h2>
+      </li>
+      <li class="list-group-item">
+        <% announcement.avatars.each do |avatar| %>
+        <%= image_tag (avatar.thumb.url) unless avatar.file.nil? %>
+        <%break%>
+        <% end %>
+      </li>
+      <li class="list-group-item">
+        <h3><%= announcement.description %></h3>
+      </li>
+      <li class="list-group-item">
+        <h3>Category: <%= announcement.category.name %></h3>
+      </li>
+      <li class="list-group-item">
+        <p><%= announcement.price %></p>
+      </li>
+      <li class="list-group-item">
+        <strong>Author: <%= announcement.user.email %></strong>
+      </li>
+
+
+    </ul>
+    <% end %>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Categories</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% Category.all.each do |category| %>
+          <li>
+            <%= link_to category.name, homepage_announcements_path(category_id: category.id) %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Search</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_tag("/announcements/homepage", method: "post") do %>
+        <%= text_field_tag(:search_term) %>
+        <%= submit_tag("Search") %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

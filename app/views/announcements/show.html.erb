@@ -1,24 +1,84 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @announcement.title %>
-</p>
+<ul class="list-group">
+
+	<li class="list-group-item">
+		<p>
+			<strong>Title:</strong>
+			<%= @announcement.title %>
+		</p>
+	</li>
+
+	<li class="list-group-item">
+		<% @announcement.avatars.each do |avatar| %>
+		<%= image_tag (avatar.url) unless avatar.file.nil? %>
+		<% end %>
+	</li>
+
+	<li class="list-group-item">
+		<p>
+			<strong>Anunciante:</strong>
+			<%= @announcement.user.name %>
+		</p>
+
+	</li>
+
+	<li class="list-group-item">
+		<p>
+			<strong>Description:</strong>
+			<%= @announcement.description %>
+		</p>
+	</li>
+
+	<li class="list-group-item">
+		<p>
+			<strong>Price:</strong>
+			<%= @announcement.price %>
+		</p>
+	</li>
+
+	<li class="list-group-item">
+		<p>
+			<strong>Viewn:</strong>
+			<%= @announcement.viewn %>
+		</p>
+	</li>
+
+</ul>
 
 <p>
-  <strong>Description:</strong>
-  <%= @announcement.description %>
+	Talvez você esteja buscando por...
 </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @announcement.price %>
-</p>
+<% Announcement.all.each do |an| %>
+<% if @announcement.category ==  an.category && @announcement.id != an.id%>
+<ul class="ulRelacionada">
 
-<p>
-  <strong>Viewn:</strong>
-  <%= @announcement.viewn %>
-</p>
+	<h2></h2>
 
-<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
-<%= link_to 'Back', announcements_path %>
+	<li class="listaRelacionada">
+		<% an.avatars.each do |avatar| %>
+		<%= image_tag (avatar.thumb.url) unless avatar.file.nil? %>
+		<% end %>
+	</li>
+	<li class="listaRelacionada">
+		<p>
+			<strong>Title:</strong>
+			<a href="../announcements/<%= an.id %>"><%= an.title %></a>
+
+
+		</p>
+	</li>
+	<li class="listaRelacionada">
+		<p>
+			<strong>Anunciante:</strong>
+			<%= an.user.name %>
+		</p>
+	</li>
+</ul>
+
+<%end%>
+<%end%>
+
+<%= link_to '', edit_announcement_path(@announcement), class: 'btn btn-info' %>
+<%= link_to '', announcements_path, class: 'btn btn-info glyphicon' %>

@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Picture</th>
       <th>Description</th>
       <th>Price</th>
       <th>Viewn</th>
@@ -13,19 +14,29 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @announcements.each do |announcement| %>
-      <tr>
-        <td><%= announcement.title %></td>
-        <td><%= announcement.description %></td>
-        <td><%= announcement.price %></td>
-        <td><%= announcement.viewn %></td>
-        <td><%= link_to 'Show', announcement %></td>
-        <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
-        <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <% Announcement.all.each do |announcement| %>
+  <% if announcement.user == current_user %>
+
+
+  <tr>
+    <td><%= announcement.title %></td>
+    <td>
+      <% announcement.avatars.each do |avatar| %>
+      <%= image_tag (avatar.thumb.url) unless avatar.file.nil? %>
+      <% break %>
+      <% end %></td>
+      <td><%= announcement.description %></td>
+      <td><%= announcement.price %></td>
+      <td><%= announcement.viewn %></td>
+      <td><%= link_to 'Show', announcement , class: 'btn btn-info'%></td>
+      <td><%= link_to 'Edit', edit_announcement_path(announcement),  class: 'btn btn-info' %></td>
+      <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info'  %></td>
+    </tr>
+
+    <%end%>
     <% end %>
-  </tbody>
+  </table>
+</tbody>
 </table>
 
 <br>
