@@ -37,4 +37,5 @@ class Ability
     can :manage, Announcement do |announcement|
       announcement.user == user
   end
+end     
 end

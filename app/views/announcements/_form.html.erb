@@ -1,43 +1,47 @@
 <%= form_with(model: announcement, local: true) do |form| %>
-<% if announcement.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+  <% if announcement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-  <ul>
-    <% announcement.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
+      <ul>
+        <% announcement.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<div class="field">
-  <%= form.label :Categoria %>
-  <%= form.select :category_id, Category.all.collect {|category| [category.name, category.id]}, {}, {class: 'form-control'} %>
-</div>
-<h5><strong><%= link_to 'Incluir Categoria', new_category_path %></strong></h5>
+  <div class="field">
+    <%= form.label :Categoria %>
+    <%= form.select :category_id, Category.all.collect {|category| [category.name, category.id]}, {}, {class: 'form-control'} %>
+  </div>
 
-<div class="field">
-  <%= form.label :title %>
-  <%= form.text_field :title %>
-</div>
+  <h5>
+    <strong><%= link_to 'Incluir Categoria', new_category_path %></strong>
+  </h5>
 
-<div class="field">
-  <%= form.label :description %>
-  <%= form.text_field :description %>
-</div>
+  <div class="field">
+    <%= form.label :Título %>
+    <%= form.text_field :title, id: :announcement_title, class: 'form-control' %>
+  </div>
 
-<div class="field">
-  <%= form.label :price %>
-  <%= form.text_field :price %>
-</div>
+  <div class="field">
+    <%= form.label :Descrição %>
+    <%= form.text_field :description, id: :announcement_description, class: 'form-control' %>
+  </div>
 
-<div class="field">
-  <%= form.label :viewn %>
-  <%= form.text_field :viewn %>
-</div>
+  <div class="field">
+    <%= form.label :Preço %>
+    <%= form.text_field :price, id: :announcement_price, class: 'form-control' %>
+  </div>
 
-<div class="actions">
-  <%= form.submit %>
-</div>
+  <div class="field">
+    <%= form.label :Imagens %>
+    <%= form.file_field :avatars, multiple: true %>
+  </div>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>
