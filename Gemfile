@@ -26,6 +26,16 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'jquery-sliders-rails'
+gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
+gem 'devise'
+gem 'will_paginate', '~> 3.1.0'
+gem 'cancancan', '~> 2.0'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
