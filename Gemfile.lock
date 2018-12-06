@@ -232,7 +232,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 2.0)
   capybara (>= 2.15)
-  carrierwave (~> 1.0)
+  carrierwave
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
@@ -255,4 +255,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.5
+   1.17.1

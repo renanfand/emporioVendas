@@ -11,7 +11,7 @@
 
 	<li class="list-group-item">
 		<% @announcement.avatars.each do |avatar| %>
-		<%= image_tag (avatar.url) unless avatar.file.nil? %>
+			<%= image_tag (avatar.url) unless avatar.file.nil? %>
 		<% end %>
 	</li>
 
@@ -65,14 +65,12 @@
 		<p>
 			<strong>Title:</strong>
 			<a href="../announcements/<%= an.id %>"><%= an.title %></a>
-
-
 		</p>
 	</li>
 	<li class="listaRelacionada">
 		<p>
 			<strong>Anunciante:</strong>
-			<%= an.user.name %>
+			<%= an.user.id %>
 		</p>
 	</li>
 </ul>

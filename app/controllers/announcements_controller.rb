@@ -13,7 +13,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements/1.json
   def show
   end
-
+  
   # GET /announcements/new
   def new
     @announcement = Announcement.new

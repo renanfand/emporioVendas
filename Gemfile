@@ -34,8 +34,8 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 #customizate bootstrap
 gem 'autoprefixer-rails'
-gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
+gem 'carrierwave'
 gem 'devise'
 gem 'will_paginate', '~> 3.1.0'
 gem 'cancancan', '~> 2.0'
